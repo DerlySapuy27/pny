@@ -1,11 +1,10 @@
 @extends('adminlte::page')
 
 @section('content_header')
-<!-- sweetalert script -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- sweetalert script -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
-<h1 class="m-0 text-dark">Departamentos Piscícola New York</h1>
+    <h1 class="m-0 text-dark">Departamentos Piscícola New York</h1>
 
 @stop
 
@@ -17,7 +16,8 @@
                 <i class="fas fa-folder-plus"></i> Agregar
             </button>
         </div>
-        <!-- Lista de registros de Departamentos de la empresa -->
+        
+<!-- Lista de registros de Departamentos de la empresa -->
         <div class="card-body">
             <table class="table">
                 <thead>
@@ -35,42 +35,42 @@
                             <td>{{ $department->name }}</td>
                             <td>{{ $department->created_at }}</td>
                             <td>
-
-                                {{-- buttons --}}
+                                <!-- Botones de Editar y eliminar -->
                                 <div class="container text-center">
                                     <div class="row">
-                                      <div class="col">
-                                        <form method="POST" action="{{ route('departamento.update', ['id' => $department->id]) }}">
-                                            @csrf
-                                            @method('PUT')
-                                            <button type="button" class="btn btn-primary"  style="width: 70px;"" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="editarDepartamento({{ $department->id }})">
-                                                <i class="fas fa-edit"></i> 
-                                            </button>
-                                        </form>
-                                      </div>
-|
-                                      <div class="col">
-                                        <form method="POST" action="{{ route('departamento.delete', ['departamento' => $department->id]) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" style="width: 70px;">
-                                                <i class="fas fa-trash"></i> 
-                                            </button>
-                                        </form>       
-                                      </div>                                               
+                                        <div class="col">
+                                            <form method="POST"
+                                                action="{{ route('departamento.update', ['id' => $department->id]) }}">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="button" class="btn btn-primary" style="width: 70px;"
+                                                    data-bs-toggle="modal" data-bs-target="#editarModal"
+                                                    onclick="editarDepartamento({{ $department->id }})">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                        |
+                                        <div class="col">
+                                            <form id="deleteForm{{ $department->id }}" action="{{ route('departamento.delete', ['departamento' => $department->id]) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="button" class="btn btn-danger" style="width: 70px;" onclick="confirmDelete({{ $department->id }})">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                        
+                                    </div>
                                 </div>
-                            </div>
-
-                            {{-- buttons --}}
-                                
-                                 
-                                    
+                                <!-- Fin Botones de Editar y eliminar -->
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+<!-- Fin Lista de registros de Departamentos de la empresa -->
     </div>
 
     <!-- Modal de Crear nuevo departamento -->
@@ -102,7 +102,6 @@
     </div>
     <!-- <Fin Modal de Crear nuevo departamento -->
 
-<<<<<<< Updated upstream
     <!-- Modal de Editar Departamento -->
     <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -127,41 +126,14 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                 </div>
-=======
-<!-- Modal de Editar Departamento -->
-<div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editarModalLabel">Editar Departamento</h5>
-            </div>
-            <div class="modal-body">
-                <!-- Formulario para editar un departamento -->
-                <form method="POST" id="editarForm" action="">
-                    @csrf
-                    @method('PUT')
-                    <!-- Campo oculto para el ID del departamento -->
-                    <input type="hidden" id="edit_id" name="id">
-                    <!-- Campo para el nombre -->
-                    <div class="mb-3">
-                        <label for="edit_name" class="form-label">Nombre del Departamento</label>
-                        <input type="text" class="form-control" id="edit_name" name="name" required>
-                    </div>
-                    <!-- Botón para guardar la edición -->
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
->>>>>>> Stashed changes
             </div>
         </div>
-    </div>
     <!-- Fin Modal de Editar Departamento -->
 
-    @if(session('success'))
+{{-- Alert Exito --}}
+@if (session('success'))
     <script>
         Swal.fire({
             position: "top-end",
@@ -171,55 +143,73 @@
             timer: 1500
         });
     </script>
-    @endif
+@endif
 
-@stop
-
-
-{{-- script del modal Crear departamento --}}
+{{-- Alert de Confirmación de Eliminación --}}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var myModal = new bootstrap.Modal(document.getElementById('creardepartamento'));
-
-        document.getElementById('showModalButton').addEventListener('click', function() {
-            myModal.show();
+    function confirmDelete(id) {
+        Swal.fire({
+            title: "¿Estás Seguro/a?",
+            text: "¡No podrás revertir esto!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, Eliminar!",
+            cancelButtonText: "Cancelar" // Cambia la palabra Cancelar aquí
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Envías el formulario directamente
+                document.getElementById('deleteForm' + id).submit();
+            }
         });
-
-        /* evento para cerrar el modal agregar*/
-        document.querySelector('#creardepartamento .modal-footer .btn-secondary').addEventListener('click',
-            function() {
-                myModal.hide();
-            })
-    });
-</script>
-
-<!-- Script del modal editar departamento -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Evento para cerrar el modal de edición al hacer clic en el botón "Cerrar"
-        document.getElementById('editarCerrar').addEventListener('click', function() {
-            var editarModal = new bootstrap.Modal(document.getElementById('editarModal'));
-            editarModal.hide();
-        });
-    });
-
-    function editarDepartamento(id) {
-        // Realizar una petición AJAX para obtener los datos del departamento
-        fetch(`/departamento/${id}/detalle`)
-            .then(response => response.json())
-            .then(data => {
-                // Actualizar el valor del campo name
-                document.getElementById('edit_name').value = data.name;
-
-                // Actualizar el formulario con la ruta correcta para la actualización
-                document.getElementById('editarForm').action = `/departamento/${data.id}/update`;
-
-                // Abrir el modal de edición
-                var editarModal = new bootstrap.Modal(document.getElementById('editarModal'));
-                editarModal.show();
-            })
-            .catch(error => console.error('Error al obtener datos del departamento:', error));
     }
 </script>
 
+@stop
 
+    {{-- script del modal Crear departamento --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var myModal = new bootstrap.Modal(document.getElementById('creardepartamento'));
+
+            document.getElementById('showModalButton').addEventListener('click', function() {
+                myModal.show();
+            });
+
+            /* evento para cerrar el modal agregar*/
+            document.querySelector('#creardepartamento .modal-footer .btn-secondary').addEventListener('click',
+                function() {
+                    myModal.hide();
+                })
+        });
+    </script>
+
+    <!-- Script del modal editar departamento -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Evento para cerrar el modal de edición al hacer clic en el botón "Cerrar"
+            document.getElementById('editarCerrar').addEventListener('click', function() {
+                var editarModal = new bootstrap.Modal(document.getElementById('editarModal'));
+                editarModal.hide();
+            });
+        });
+
+        function editarDepartamento(id) {
+            // Realizar una petición AJAX para obtener los datos del departamento
+            fetch(`/departamento/${id}/detalle`)
+                .then(response => response.json())
+                .then(data => {
+                    // Actualizar el valor del campo name
+                    document.getElementById('edit_name').value = data.name;
+
+                    // Actualizar el formulario con la ruta correcta para la actualización
+                    document.getElementById('editarForm').action = `/departamento/${data.id}/update`;
+
+                    // Abrir el modal de edición
+                    var editarModal = new bootstrap.Modal(document.getElementById('editarModal'));
+                    editarModal.show();
+                })
+                .catch(error => console.error('Error al obtener datos del departamento:', error));
+        }
+    </script>
