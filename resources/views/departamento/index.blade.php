@@ -1,8 +1,12 @@
 @extends('adminlte::page')
 
-
 @section('content_header')
-    <h1 class="m-0 text-dark">Departamentos Piscícola New York</h1>
+<!-- sweetalert script -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<h1 class="m-0 text-dark">Departamentos Piscícola New York</h1>
+
 @stop
 
 @section('content')
@@ -71,39 +75,48 @@
     </div>
     <!-- <Fin Modal de Crear nuevo departamento -->
 
-<!-- Modal de Editar Departamento -->
-<div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editarModalLabel">Editar Departamento</h5>
-            </div>
-            <div class="modal-body">
-                <!-- Formulario para editar un departamento -->
-                <form method="POST" id="editarForm" action="">
-                    @csrf
-                    @method('PUT')
-                    <!-- Campo oculto para el ID del departamento -->
-                    <input type="hidden" id="edit_id" name="id">
-                    <!-- Campo para el nombre -->
-                    <div class="mb-3">
-                        <label for="edit_name" class="form-label">Nombre del Departamento</label>
-                        <input type="text" class="form-control" id="edit_name" name="name" required>
-                    </div>
-                    <!-- Botón para guardar la edición -->
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+    <!-- Modal de Editar Departamento -->
+    <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editarModalLabel">Editar Departamento</h5>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario para editar un departamento -->
+                    <form method="POST" id="editarForm" action="">
+                        @csrf
+                        @method('PUT')
+                        <!-- Campo oculto para el ID del departamento -->
+                        <input type="hidden" id="edit_id" name="id">
+                        <!-- Campo para el nombre -->
+                        <div class="mb-3">
+                            <label for="edit_name" class="form-label">Nombre del Departamento</label>
+                            <input type="text" class="form-control" id="edit_name" name="name" required>
+                        </div>
+                        <!-- Botón para guardar la edición -->
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Fin Modal de Editar Departamento -->
+    <!-- Fin Modal de Editar Departamento -->
 
-
-
+    @if(session('success'))
+    <script>
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Éxito",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    </script>
+    @endif
 
 @stop
 
@@ -127,9 +140,9 @@
 
 <!-- Script del modal editar departamento -->
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         // Evento para cerrar el modal de edición al hacer clic en el botón "Cerrar"
-        document.getElementById('editarCerrar').addEventListener('click', function () {
+        document.getElementById('editarCerrar').addEventListener('click', function() {
             var editarModal = new bootstrap.Modal(document.getElementById('editarModal'));
             editarModal.hide();
         });
@@ -153,6 +166,5 @@
             .catch(error => console.error('Error al obtener datos del departamento:', error));
     }
 </script>
-
 
 
