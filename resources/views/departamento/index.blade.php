@@ -35,9 +35,36 @@
                             <td>{{ $department->name }}</td>
                             <td>{{ $department->created_at }}</td>
                             <td>
-                                <i class="fas fa-edit" data-bs-toggle="modal" data-bs-target="#editarModal"
-                                    onclick="editarDepartamento({{ $department->id }})"></i>
-                                <i class="fas fa-trash"></i>
+
+                                {{-- buttons --}}
+                                <div class="container text-center">
+                                    <div class="row">
+                                      <div class="col">
+                                        <form method="POST" action="{{ route('departamento.update', ['id' => $department->id]) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="button" class="btn btn-primary"  style="width: 70px;"" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="editarDepartamento({{ $department->id }})">
+                                                <i class="fas fa-edit"></i> 
+                                            </button>
+                                        </form>
+                                      </div>
+|
+                                      <div class="col">
+                                        <form method="POST" action="{{ route('departamento.delete', ['departamento' => $department->id]) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" style="width: 70px;">
+                                                <i class="fas fa-trash"></i> 
+                                            </button>
+                                        </form>       
+                                      </div>                                               
+                                </div>
+                            </div>
+
+                            {{-- buttons --}}
+                                
+                                 
+                                    
                             </td>
                         </tr>
                     @endforeach
@@ -75,6 +102,7 @@
     </div>
     <!-- <Fin Modal de Crear nuevo departamento -->
 
+<<<<<<< Updated upstream
     <!-- Modal de Editar Departamento -->
     <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -101,6 +129,33 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
+=======
+<!-- Modal de Editar Departamento -->
+<div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarModalLabel">Editar Departamento</h5>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario para editar un departamento -->
+                <form method="POST" id="editarForm" action="">
+                    @csrf
+                    @method('PUT')
+                    <!-- Campo oculto para el ID del departamento -->
+                    <input type="hidden" id="edit_id" name="id">
+                    <!-- Campo para el nombre -->
+                    <div class="mb-3">
+                        <label for="edit_name" class="form-label">Nombre del Departamento</label>
+                        <input type="text" class="form-control" id="edit_name" name="name" required>
+                    </div>
+                    <!-- Botón para guardar la edición -->
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+>>>>>>> Stashed changes
             </div>
         </div>
     </div>

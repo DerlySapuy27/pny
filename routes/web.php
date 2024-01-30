@@ -30,3 +30,4 @@ Route::post('/departamento/create', [DepartmentController::class, 'creardepartam
 Route::get('/departamento/{id}/editar', [DepartmentController::class, 'edit'])->name('departamento.editar');
 Route::get('/departamento/{id}/detalle', [DepartmentController::class, 'detalle'])->name('departamento.detalle');
 Route::put('/departamento/{id}/update', [DepartmentController::class, 'update'])->name('departamento.update');
+Route::delete('/departamento/{departamento}', [DepartmentController::class, 'delete'])->name('departamento.delete');
