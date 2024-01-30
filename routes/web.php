@@ -28,4 +28,5 @@ Route::get('/departamento/index', [DepartmentController::class, 'index'])->name(
 Route::resource('departamento', DepartmentController::class)->names(['create' => 'departamento.creardepartamento',]);
 Route::post('/departamento/create', [DepartmentController::class, 'creardepartamento'])->name('departamento.creardepartamento');
 Route::get('/departamento/{id}/editar', [DepartmentController::class, 'edit'])->name('departamento.editar');
-Route::put('/departamento/{departamento}', [DepartmentController::class, 'update'])->name('departamento.update');
+Route::get('/departamento/{id}/detalle', [DepartmentController::class, 'detalle'])->name('departamento.detalle');
+Route::put('/departamento/{id}/update', [DepartmentController::class, 'update'])->name('departamento.update');

@@ -26,11 +26,10 @@ class DepartmentController extends Controller
         return redirect()->route('departamento.index')->with('success', 'Departamento creado exitosamente.');
     }
 
-    public function edit($id)
-{
+    public function edit($id){
     $department = Department::findOrFail($id);
     return view('departamento.editar', compact('department'));
-}
+    }
 
 
     public function update(Request $request, $id)
@@ -46,4 +45,12 @@ class DepartmentController extends Controller
 
         return redirect()->route('departamento.index')->with('success', 'Departamento actualizado exitosamente.');
     } 
+
+    public function detalle($id)
+{
+    $department = Department::findOrFail($id);
+    return response()->json($department);
+}
+
+    
 }
