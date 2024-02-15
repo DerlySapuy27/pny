@@ -1,10 +1,9 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <!-- sweetalert script -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@include('head')
 
-    <h1 class="m-0 text-dark">Departamentos Piscícola New York</h1>
+<h1 class="m-0 text-dark">Departamentos Piscícola New York</h1>
 
 @stop
 
@@ -19,10 +18,9 @@
         
 <!-- Lista de registros de Departamentos de la empresa -->
         <div class="card-body">
-            <table class="table">
+            <table id="datatable" class="table table-striped shadow-lg mt-4" style="width:100%">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Nombre</th>
                         <th>Fecha de Creación</th>
                         <th>Acciones</th>
@@ -31,7 +29,6 @@
                 <tbody>
                     @foreach ($departments as $department)
                         <tr>
-                            <td>{{ $department->id }}</td>
                             <td>{{ $department->name }}</td>
                             <td>{{ $department->created_at }}</td>
                             <td>
@@ -132,84 +129,57 @@
         </div>
     <!-- Fin Modal de Editar Departamento -->
 
-{{-- Alert Exito --}}
-@if (session('success'))
-    <script>
-        Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Éxito",
-            showConfirmButton: false,
-            timer: 1500
-        });
-    </script>
-@endif
 
-{{-- Alert de Confirmación de Eliminación --}}
-<script>
-    function confirmDelete(id) {
-        Swal.fire({
-            title: "¿Estás Seguro/a?",
-            text: "¡No podrás revertir esto!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Si, Eliminar!",
-            cancelButtonText: "Cancelar" // Cambia la palabra Cancelar aquí
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Envías el formulario directamente
-                document.getElementById('deleteForm' + id).submit();
-            }
-        });
-    }
-</script>
+
+@include('alerts')
+
+@include('datatable-script')
 
 @stop
 
-    {{-- script del modal Crear departamento --}}
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var myModal = new bootstrap.Modal(document.getElementById('creardepartamento'));
+{{-- script del modal Crear departamento --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var myModal = new bootstrap.Modal(document.getElementById('creardepartamento'));
 
-            document.getElementById('showModalButton').addEventListener('click', function() {
-                myModal.show();
-            });
-
-            /* evento para cerrar el modal agregar*/
-            document.querySelector('#creardepartamento .modal-footer .btn-secondary').addEventListener('click',
-                function() {
-                    myModal.hide();
-                })
+        document.getElementById('showModalButton').addEventListener('click', function() {
+            myModal.show();
         });
-    </script>
 
-    <!-- Script del modal editar departamento -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Evento para cerrar el modal de edición al hacer clic en el botón "Cerrar"
-            document.getElementById('editarCerrar').addEventListener('click', function() {
+        /* evento para cerrar el modal agregar*/
+        document.querySelector('#creardepartamento .modal-footer .btn-secondary').addEventListener('click',
+            function() {
+                myModal.hide();
+            })
+    });
+</script>
+
+<!-- Script del modal editar departamento -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Evento para cerrar el modal de edición al hacer clic en el botón "Cerrar"
+        document.getElementById('editarCerrar').addEventListener('click', function() {
+            var editarModal = new bootstrap.Modal(document.getElementById('editarModal'));
+            editarModal.hide();
+        });
+    });
+
+    function editarDepartamento(id) {
+        // Realizar una petición AJAX para obtener los datos del departamento
+        fetch(`/departamento/${id}/detalle`)
+            .then(response => response.json())
+            .then(data => {
+                // Actualizar el valor del campo name
+                document.getElementById('edit_name').value = data.name;
+
+                // Actualizar el formulario con la ruta correcta para la actualización
+                document.getElementById('editarForm').action = `/departamento/${data.id}/update`;
+
+                // Abrir el modal de edición
                 var editarModal = new bootstrap.Modal(document.getElementById('editarModal'));
-                editarModal.hide();
-            });
-        });
+                editarModal.show();
+            })
+            .catch(error => console.error('Error al obtener datos del departamento:', error));
+    }
+</script>
 
-        function editarDepartamento(id) {
-            // Realizar una petición AJAX para obtener los datos del departamento
-            fetch(`/departamento/${id}/detalle`)
-                .then(response => response.json())
-                .then(data => {
-                    // Actualizar el valor del campo name
-                    document.getElementById('edit_name').value = data.name;
-
-                    // Actualizar el formulario con la ruta correcta para la actualización
-                    document.getElementById('editarForm').action = `/departamento/${data.id}/update`;
-
-                    // Abrir el modal de edición
-                    var editarModal = new bootstrap.Modal(document.getElementById('editarModal'));
-                    editarModal.show();
-                })
-                .catch(error => console.error('Error al obtener datos del departamento:', error));
-        }
-    </script>

@@ -18,16 +18,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/home', function() {return view('home');})->name('home')->middleware('auth');
 
 Route::get('area', [AreaController::class, 'index']);
-Route::get('/area/index', [AreaController::class, 'index'])->name('area.index');
 Route::get('/empleado/index', [EmployeeController::class, 'index'])->name('empleado.index');
 Route::get('/cargo/index', [PositionController::class, 'index'])->name('cargo.index');
 Route::get('/sede/index', [SedeController::class, 'index'])->name('sede.index');
 
 /* Rutas de Departamento */
 Route::get('/departamento/index', [DepartmentController::class, 'index'])->name('departamento.index');
-Route::resource('departamento', DepartmentController::class)->names(['create' => 'departamento.creardepartamento',]);
 Route::post('/departamento/create', [DepartmentController::class, 'creardepartamento'])->name('departamento.creardepartamento');
 Route::get('/departamento/{id}/editar', [DepartmentController::class, 'edit'])->name('departamento.editar');
 Route::get('/departamento/{id}/detalle', [DepartmentController::class, 'detalle'])->name('departamento.detalle');
 Route::put('/departamento/{id}/update', [DepartmentController::class, 'update'])->name('departamento.update');
 Route::delete('/departamento/{departamento}', [DepartmentController::class, 'delete'])->name('departamento.delete');
+
+/* Rutas de Áreas */
+Route::get('/area/index', [AreaController::class, 'index'])->name('area.index');
+Route::post('/area/create', [AreaController::class, 'creararea'])->name('area.creararea');
+Route::put('/area/{area}', [AreaController::class, 'update'])->name('area.update');
+Route::delete('/area/{area}', [AreaController::class, 'delete'])->name('area.delete');
