@@ -33,5 +33,6 @@ Route::delete('/departamento/{departamento}', [DepartmentController::class, 'del
 /* Rutas de Áreas */
 Route::get('/area/index', [AreaController::class, 'index'])->name('area.index');
 Route::post('/area/create', [AreaController::class, 'creararea'])->name('area.creararea');
-Route::put('/area/{area}', [AreaController::class, 'update'])->name('area.update');
+Route::get('/area/{id}/detalle', [AreaController::class, 'detalle'])->name('area.detalle');
+Route::put('/area/{id}/update', [AreaController::class, 'update'])->name('area.update');
 Route::delete('/area/{area}', [AreaController::class, 'delete'])->name('area.delete');

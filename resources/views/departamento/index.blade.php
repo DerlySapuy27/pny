@@ -47,7 +47,6 @@
                                                 </button>
                                             </form>
                                         </div>
-                                        |
                                         <div class="col">
                                             <form id="deleteForm{{ $department->id }}" action="{{ route('departamento.delete', ['departamento' => $department->id]) }}" method="POST">
                                                 @csrf

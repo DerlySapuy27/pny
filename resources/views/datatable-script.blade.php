@@ -5,6 +5,7 @@
 {{-- Fin Datatables scripts --}}
 
 
+{{-- script para mostrar 5 registros por pagina en datatable --}}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         new DataTable('#datatable', {
