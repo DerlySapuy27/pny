@@ -1,8 +1,8 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    @include('head')
-    <h1 class="m-0 text-dark">Areas Piscícola New York</h1>
+@include('head')
+<h1 class="m-0 text-dark">Areas Piscícola New York</h1>
 @stop
 
 @section('content')
@@ -13,7 +13,6 @@
                 <i class="fas fa-folder-plus"></i> Agregar
             </button>
         </div>
-
         <!-- Lista de registros de Áreas -->
         <div class="card-body">
             <table id="datatable" class="table table-striped shadow-lg mt-4" style="width:100%">
@@ -73,18 +72,15 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="crearAreaModalLabel">Crear Nueva Área</h5>
+                    <h5 class="modal-title" id="crearAreaModalLabel">CREAR NUEVA ÁREA</h5>
                 </div>
                 <div class="modal-body">
-                    <!-- Formulario para crear una nueva área -->
                     <form method="POST" action="{{ route('area.creararea') }}">
                         @csrf
-                        <!-- Campo para el nombre del área -->
                         <div class="mb-3">
                             <label for="area_name" class="form-label">Nombre</label>
                             <input type="text" class="form-control" id="area_name" name="name" required>
                         </div>
-                        <!-- Campo para seleccionar el departamento -->
                         <div class="mb-3">
                             <label for="area_department" class="form-label">Departamento</label>
                             <select class="form-control" id="area_department" name="department_id" required>
@@ -96,12 +92,8 @@
                                 </optgroup>
                             </select>
                         </div>
-                        <!-- Botón para guardar el área -->
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <center><button type="submit" class="btn btn-primary">Guardar</button></center>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
@@ -113,29 +105,23 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editarAreaModalLabel">Editar Área</h5>
+                <h5 class="modal-title" id="editarAreaModalLabel">EDITAR ÁREA</h5>
             </div>
             <div class="modal-body">
-                <!-- Formulario para editar un área -->
                 <form method="POST" id="editarAreaForm" action="">
                     @csrf
                     @method('PUT')
-                    <!-- Campo oculto para el ID del área -->
                     <input type="hidden" id="edit_area_id" name="id">
-                    <!-- Campo para el nombre del área -->
                     <div class="mb-3">
                         <label for="edit_area_name" class="form-label">Nombre del Área</label>
                         <input type="text" class="form-control" id="edit_area_name" name="name" required>
                     </div>
-                    <!-- Campo para seleccionar el departamento -->
                     <div class="mb-3">
                         <label for="edit_area_department" class="form-label">Departamento</label>
                         <select class="form-control" id="edit_area_department" name="department_id" required>
-                            <!-- Puedes agregar las opciones dinámicamente con JavaScript -->
                         </select>
                     </div>
-                    <!-- Botón para guardar la edición -->
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <center><button type="submit" class="btn btn-primary">Guardar</button></center>
                 </form>
             </div>
         </div>

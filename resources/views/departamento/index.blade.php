@@ -22,7 +22,6 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Fecha de Creación</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -30,7 +29,6 @@
                     @foreach ($departments as $department)
                         <tr>
                             <td>{{ $department->name }}</td>
-                            <td>{{ $department->created_at }}</td>
                             <td>
                                 <!-- Botones de Editar y eliminar -->
                                 <div class="container text-center">

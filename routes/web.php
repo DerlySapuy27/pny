@@ -19,7 +19,6 @@ Route::get('/home', function() {return view('home');})->name('home')->middleware
 
 Route::get('area', [AreaController::class, 'index']);
 Route::get('/empleado/index', [EmployeeController::class, 'index'])->name('empleado.index');
-Route::get('/cargo/index', [PositionController::class, 'index'])->name('cargo.index');
 Route::get('/sede/index', [SedeController::class, 'index'])->name('sede.index');
 
 /* Rutas de Departamento */
@@ -36,3 +35,10 @@ Route::post('/area/create', [AreaController::class, 'creararea'])->name('area.cr
 Route::get('/area/{id}/detalle', [AreaController::class, 'detalle'])->name('area.detalle');
 Route::put('/area/{id}/update', [AreaController::class, 'update'])->name('area.update');
 Route::delete('/area/{area}', [AreaController::class, 'delete'])->name('area.delete');
+
+/* Rutas de Cargos */
+Route::post('/cargo/create', [PositionController::class, 'crearCargo'])->name('cargo.crearCargo');
+Route::get('/cargo/index', [PositionController::class, 'index'])->name('cargo.index');
+Route::get('/cargo/{id}/detalle', [PositionController::class, 'detalle'])->name('cargo.detalle');
+Route::put('/cargo/{id}/update', [PositionController::class, 'update'])->name('cargo.update');
+Route::delete('/cargo/{position}', [PositionController::class, 'delete'])->name('cargo.delete');
