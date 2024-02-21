@@ -9,10 +9,10 @@
             timer: 1500
         });
     </script>
-    @endif
+@endif
 
 
-    {{-- Alert de Confirmación de Eliminación --}}
+{{-- Alert de Confirmación de Eliminación --}}
 <script>
     function confirmDelete(id) {
         Swal.fire({
@@ -30,5 +30,25 @@
                 document.getElementById('deleteForm' + id).submit();
             }
         });
+    }
+</script>
+
+
+{{-- oninput="formatToUpper(this)" 
+    pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+"
+    TEXTO A MAYUSCULAS --}}
+
+{{-- onkeypress="return allowLettersOnly(event)"
+no permite numeros en el campo --}}
+<script>
+    /* funcion convertir mayusculas */
+    function formatToUpper(input) {
+        input.value = input.value.toUpperCase();
+    }
+
+    /* funcion solo letras y espacios */
+    function allowLettersOnly(event) {
+        const charCode = event.charCode || event.keyCode;
+        return (charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || charCode === 32;
     }
 </script>

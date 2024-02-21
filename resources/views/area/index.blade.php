@@ -1,8 +1,8 @@
 @extends('adminlte::page')
 
 @section('content_header')
-@include('head')
-<h1 class="m-0 text-dark">Areas Piscícola New York</h1>
+    @include('head')
+    <h1 class="m-0 text-dark">Áreas Piscícola New York</h1>
 @stop
 
 @section('content')
@@ -13,6 +13,7 @@
                 <i class="fas fa-folder-plus"></i> Agregar
             </button>
         </div>
+
         <!-- Lista de registros de Áreas -->
         <div class="card-body">
             <table id="datatable" class="table table-striped shadow-lg mt-4" style="width:100%">
@@ -37,13 +38,12 @@
                                                 @csrf
                                                 @method('PUT')
                                                 <button type="button" class="btn btn-primary" style="width: 70px;"
-                                                        data-bs-toggle="modal" data-bs-target="#editarAreaModal"
-                                                        onclick="editarArea({{ $area->id }})">
+                                                    data-bs-toggle="modal" data-bs-target="#editarAreaModal"
+                                                    onclick="editarArea({{ $area->id }})">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
                                             </form>
                                         </div>
-                                        
                                         <div class="col">
                                             <form id="deleteForm{{ $area->id }}"
                                                 action="{{ route('area.delete', ['area' => $area->id]) }}" method="POST">
@@ -79,7 +79,9 @@
                         @csrf
                         <div class="mb-3">
                             <label for="area_name" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="area_name" name="name" required>
+                            <input type="text" class="form-control" id="area_name" name="name"
+                                oninput="formatToUpper(this)" onkeypress="return allowLettersOnly(event)"
+                                pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" required>
                         </div>
                         <div class="mb-3">
                             <label for="area_department" class="form-label">Departamento</label>
@@ -100,37 +102,39 @@
     </div>
     <!-- <Fin Modal de Crear nueva Área -->
 
-<!-- Modal de Editar Área -->
-<div class="modal fade" id="editarAreaModal" tabindex="-1" aria-labelledby="editarAreaModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editarAreaModalLabel">EDITAR ÁREA</h5>
-            </div>
-            <div class="modal-body">
-                <form method="POST" id="editarAreaForm" action="">
-                    @csrf
-                    @method('PUT')
-                    <input type="hidden" id="edit_area_id" name="id">
-                    <div class="mb-3">
-                        <label for="edit_area_name" class="form-label">Nombre del Área</label>
-                        <input type="text" class="form-control" id="edit_area_name" name="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="edit_area_department" class="form-label">Departamento</label>
-                        <select class="form-control" id="edit_area_department" name="department_id" required>
-                        </select>
-                    </div>
-                    <center><button type="submit" class="btn btn-primary">Guardar</button></center>
-                </form>
+    <!-- Modal de Editar Área -->
+    <div class="modal fade" id="editarAreaModal" tabindex="-1" aria-labelledby="editarAreaModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editarAreaModalLabel">EDITAR ÁREA</h5>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" id="editarAreaForm" action="">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" id="edit_area_id" name="id">
+                        <div class="mb-3">
+                            <label for="edit_area_name" class="form-label">Nombre del Área</label>
+                            <input type="text" class="form-control" id="edit_area_name" name="name"
+                                oninput="formatToUpper(this)" onkeypress="return allowLettersOnly(event)"
+                                pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit_area_department" class="form-label">Departamento</label>
+                            <select class="form-control" id="edit_area_department" name="department_id" required>
+                            </select>
+                        </div>
+                        <center><button type="submit" class="btn btn-primary">Guardar</button></center>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Fin Modal de Editar Área -->
+    <!-- Fin Modal de Editar Área -->
 
-@include('alerts')
-@include('datatable-script')
+    @include('alerts')
+    @include('datatable-script')
 @stop
 {{-- script del modal Crear Área --}}
 <script>
@@ -151,49 +155,48 @@
 {{-- Fin script del modal Crear Área --}}
 
 <!-- Script del modal editar área -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Evento para cerrar el modal de edición al hacer clic en el botón "Cerrar"
-            document.getElementById('editarAreaCerrar').addEventListener('click', function() {
-                var editarAreaModal = new bootstrap.Modal(document.getElementById('editarAreaModal'));
-                editarAreaModal.hide();
-            });
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Evento para cerrar el modal de edición al hacer clic en el botón "Cerrar"
+        document.getElementById('editarAreaCerrar').addEventListener('click', function() {
+            var editarAreaModal = new bootstrap.Modal(document.getElementById('editarAreaModal'));
+            editarAreaModal.hide();
         });
+    });
 
-        function editarArea(id) {
-            // Realizar una petición AJAX para obtener los datos del área
-            fetch(`/area/${id}/detalle`)
-                .then(response => response.json())
-                .then(data => {
-                    // Actualizar el valor del campo name
-                    document.getElementById('edit_area_name').value = data.name;
+    function editarArea(id) {
+        // Realizar una petición AJAX para obtener los datos del área
+        fetch(`/area/${id}/detalle`)
+            .then(response => response.json())
+            .then(data => {
+                // Actualizar el valor del campo name
+                document.getElementById('edit_area_name').value = data.name;
 
-                    // Obtener el elemento del campo department_id
-                    var editAreaDepartment = document.getElementById('edit_area_department');
+                // Obtener el elemento del campo department_id
+                var editAreaDepartment = document.getElementById('edit_area_department');
 
-                    // Limpiar opciones actuales
-                    editAreaDepartment.innerHTML = '';
+                // Limpiar opciones actuales
+                editAreaDepartment.innerHTML = '';
 
-                    // Crear y agregar las nuevas opciones del departamento
-                    data.departments.forEach(function(department) {
-                        var option = document.createElement('option');
-                        option.value = department.id;
-                        option.text = department.name;
-                        editAreaDepartment.add(option);
-                    });
+                // Crear y agregar las nuevas opciones del departamento
+                data.departments.forEach(function(department) {
+                    var option = document.createElement('option');
+                    option.value = department.id;
+                    option.text = department.name;
+                    editAreaDepartment.add(option);
+                });
 
-                    // Seleccionar el departamento asociado al área
-                    editAreaDepartment.value = data.selected_department_id;
+                // Seleccionar el departamento asociado al área
+                editAreaDepartment.value = data.selected_department_id;
 
-                    // Actualizar el formulario con la ruta correcta para la actualización
-                    document.getElementById('editarAreaForm').action = `/area/${data.id}/update`;
+                // Actualizar el formulario con la ruta correcta para la actualización
+                document.getElementById('editarAreaForm').action = `/area/${data.id}/update`;
 
-                    // Abrir el modal de edición
-                    var editarAreaModal = new bootstrap.Modal(document.getElementById('editarAreaModal'));
-                    editarAreaModal.show();
-                })
-                .catch(error => console.error('Error al obtener datos del área:', error));
-        }
-    </script>
+                // Abrir el modal de edición
+                var editarAreaModal = new bootstrap.Modal(document.getElementById('editarAreaModal'));
+                editarAreaModal.show();
+            })
+            .catch(error => console.error('Error al obtener datos del área:', error));
+    }
+</script>
 <!-- Script del modal editar área -->
-
