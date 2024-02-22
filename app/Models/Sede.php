@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sede extends Model
 {
-    public function employees(){
+    use HasFactory;
+
+    protected $fillable = ['name'];
+
+    public function employees()
+    {
         return $this->hasMany(Employee::class);
     }
 }

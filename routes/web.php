@@ -42,3 +42,9 @@ Route::get('/cargo/index', [PositionController::class, 'index'])->name('cargo.in
 Route::get('/cargo/{id}/detalle', [PositionController::class, 'detalle'])->name('cargo.detalle');
 Route::put('/cargo/{id}/update', [PositionController::class, 'update'])->name('cargo.update');
 Route::delete('/cargo/{position}', [PositionController::class, 'delete'])->name('cargo.delete');
+
+Route::post('/sede/create', [SedeController::class, 'crearsede'])->name('sede.crearsede');
+Route::get('/sede/index', [SedeController::class, 'index'])->name('sede.index');
+Route::get('/sede/{id}/detalle', [SedeController::class, 'detalle'])->name('sede.detalle');
+Route::put('/sede/{id}/update', [SedeController::class, 'update'])->name('sede.update');
+Route::delete('/sede/{sede}', [SedeController::class, 'delete'])->name('sede.delete');
