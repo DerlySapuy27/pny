@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Area extends Model
 {
 
-    protected $fillable = ['name', 'department_id'];
+    protected $fillable = 
+    [
+        'name', 
+        'department_id'
+    ];
 
     public function department(){
         return $this->belongsTo(Department::class, 'department_id');

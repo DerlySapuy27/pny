@@ -24,7 +24,6 @@ class AreaController extends Controller
     Area::create([
         'name' => $request->name,
         'department_id' => $request->department_id,
-        // Asegúrate de incluir cualquier otro campo necesario
     ]);
 
     return redirect()->route('area.index')->with('success', 'Área creada exitosamente.');

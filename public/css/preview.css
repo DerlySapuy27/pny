@@ -1,0 +1,107 @@
+.positive-rh {
+    color: #008000; /* Cambia el color según tu preferencia */
+    font-weight: bold;
+}
+
+
+
+
+    .health-sex-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 0.3cm;
+        /* Ajusta esto según sea necesario para alinear correctamente */
+        font-family: Calibri, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        color: #000;
+        /* Ajusta el color según sea necesario */
+    }
+
+    .document-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 0.3cm;
+        /* Reducido de 0.5cm a 0.3cm */
+        font-family: Calibri, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        color: #000;
+        /* O el color deseado */
+    }
+
+    .document-label,
+    .document-number {
+        display: inline-block;
+    }
+
+    .employee-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .employee-card {
+        background-image: url("/images/base.jpeg");
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+        width: 5.3cm;
+        height: 8.5cm;
+        box-sizing: border-box;
+        /* Asegura que el padding no afecte el tamaño total */
+    }
+
+    .employee-image {
+        width: 2.0cm;
+        height: 2.6cm;
+        margin-bottom: 4px;
+        /* Reducir el espaciado debajo de la imagen */
+        margin-top: 0.15cm;
+        /* Establecer la distancia desde la parte superior */
+    }
+
+    .name-last-name,
+    .position,
+    .calibri-14 {
+        margin: 2px 0;
+        /* Reducir el espaciado entre líneas */
+        text-align: center;
+        /* Centrar el texto */
+        font-family: Arial, sans-serif;
+    }
+
+    .name-last-name {
+        font-size: 11px;
+        font-weight: bold;
+        /* Texto en negrita */
+        color: white;
+        /* Cambiar el color del texto a blanco */
+    }
+
+
+    .position {
+        font-size: 9px;
+        color: white;
+        font-weight: bold;
+        /* Texto en negrita */
+        border-radius: 8px;
+        padding: 8px;
+        display: inline-block;
+        width: 4.3cm;
+        height: 0.7cm;
+        margin: 0.5cm 0.5cm 0 0.2cm;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .calibri-14 {
+        font-family: Calibri, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        /* Texto en negrita */
+    }
+

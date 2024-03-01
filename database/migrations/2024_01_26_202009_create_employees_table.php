@@ -11,27 +11,29 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employee', function (Blueprint $table) {
+        Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('last_name');
             $table->string('document_number');
+            $table->enum('sex_type', ['M', 'F']);
             $table->foreignId('position_id')->constrained()->onDelete('cascade');
             $table->enum('blood_type', ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']);
             $table->foreignId('area_id')->constrained()->onDelete('cascade');
             $table->boolean('delivered')->default(false); // Por defecto, no entregado
-            $table->string('observation');
-            $table->string('license_number');
+            $table->string('observation')->nullable(); // Permite valores nulos
+            $table->string('license_number')->nullable(); // Permite valores nulos
             $table->foreignId('sede_id')->constrained()->onDelete('cascade');
+            $table->binary('signature')->nullable();
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('employee');
+        Schema::dropIfExists('employees');
     }
 };

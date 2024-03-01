@@ -296,9 +296,14 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
+            'text' => 'Carnet',
+            'url'  => '/carnet/index',  
+            'icon' => 'fas fa-id-card',
+        ],
+        [
             'text' => 'Departamento',
             'url'  => '/departamento/index',
-            'icon' => 'fas fa-fw fa-tree',
+            'icon' => 'fas fa-house-user',
         ],
         [
             'text' => 'Área',
@@ -313,7 +318,7 @@ return [
         [
             'text' => 'SEDES',
             'url'  => '/sede/index',
-            'icon' => 'fas fa-fw fa-home',
+            'icon' => 'fas fa-map-marker-alt',
         ],
     ],
 

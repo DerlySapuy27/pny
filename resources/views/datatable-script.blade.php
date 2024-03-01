@@ -4,7 +4,7 @@
 <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 
 {{-- Fin Datatables scripts --}}
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 {{-- script para mostrar 5 registros por pagina en datatable --}}
 <script>
