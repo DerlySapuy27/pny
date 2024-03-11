@@ -1,0 +1,5 @@
+
+    .form-control {
+        max-width: 100%;
+        resize: vertical; /* Permite que el campo se extienda verticalmente */
+    }

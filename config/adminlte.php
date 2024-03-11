@@ -316,11 +316,41 @@ return [
             'icon' => 'fas fa-fw fa-address-book',
         ],
         [
-            'text' => 'SEDES',
+            'text' => 'Sedes',
             'url'  => '/sede/index',
             'icon' => 'fas fa-map-marker-alt',
         ],
-    ],
+        [
+            'text' => 'Equipos',
+            'icon' => 'fas fa-laptop', // Cambiado a un icono de laptop sin enlace
+            'submenu' => [ // Agregado un submenu para el dropdown
+                [
+                    'text' => 'Registro de Equipos',
+                    'url' => '/Equipment/View/PNY',
+                    'icon' => 'fas fa-plus'
+                ],
+                [
+                    'text' => 'Asignar  Equipos',
+                    'url' => '/AsignacionEquiposPNY',
+                    'icon' => 'fas fa-chalkboard-teacher'
+               
+                ],
+                [
+                    'text' => 'Consultar  Equipos',
+                    'url' => '/ConsultaEquiposPNY',
+                    'icon' => 'far fa-file'
+               
+                ],
+                [
+                    'text' => 'Prestamo Impresora',
+                    'url' => '/Equipment/PrinterLoan/PNY',
+                    'icon' => 'fas fa-print'
+               
+                ],
+                
+            ],
+        ],
+    ],   
 
     /*
     |--------------------------------------------------------------------------

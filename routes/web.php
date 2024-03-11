@@ -7,8 +7,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\SedeController;
-use App\Http\Controllers\LicenseController;
-
+use App\Http\Controllers\EquipmentController;
 
 
 Auth::routes();
@@ -38,6 +37,7 @@ Route::get('/cargo/{id}/detalle', [PositionController::class, 'detalle'])->name(
 Route::put('/cargo/{id}/update', [PositionController::class, 'update'])->name('cargo.update')->middleware('auth');
 Route::delete('/cargo/{position}', [PositionController::class, 'delete'])->name('cargo.delete')->middleware('auth');
 
+/*rutas de sedes*/
 
 /* Rutas de sedes */
 Route::post('/sede/create', [SedeController::class, 'crearsede'])->name('sede.crearsede')->middleware('auth');
@@ -65,3 +65,17 @@ Route::get('/carnet/empleadodetails', [LicenseController::class, 'getEmployeeDet
 Route::get('/carnet/preview', [LicenseController::class, 'preview'])->name('carnet.preview');
 
 
+
+
+/*Equipment Routes*/  
+Route::get('/Equipment/View/PNY', [EquipmentController::class, 'EquipmentView_PNY'])->name('Equipment.View.PNY');
+Route::get('/EquipmentAssing/PNY', [EquipmentController::class, 'EquipmentAssing_PNY'])->name('Equipment.Assing.PNY');
+Route::get('/EquipmentConsulte/PNY', [EquipmentController::class, 'EquipmentConsulte_PNY'])->name('Equioment.Consulte.PNY');
+
+/*routes equipments functions*/
+Route::post('/Create/Equipment/PNY', [EquipmentController::class, 'EquipmentCreate_PNY'])->name('Create.Equipment.PNY');
+Route::delete('/Delete/Equipment/{Equipment}/PNY', [EquipmentController::class,'EquipmentDelete_PNY'])->name('Delete.Equipment.PNY');
+Route::get('/Equipment/{id}/Detail/PNY', [EquipmentController::class, 'EquipmentDetail_PNY'])->name('Detail.Equipment.PNY');
+Route::get('/Equipment/{id}/View/Inf/PNY', [EquipmentController::class, 'ViewInfEquipment_PNY'])->name('View.inf.Equipment.PNY');
+Route::get('/Equipment/PrinterLoan/PNY', [EquipmentController::class, 'PrinterLoanView_PNY'])->name('PrinterLoan.PNY');
+Route::put('/Equipment/{id}/Update/PNY', [EquipmentController::class, 'EquipmentUpdate_PNY'])->name('Update.Equipment.PNY');
