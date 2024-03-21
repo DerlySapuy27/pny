@@ -153,7 +153,7 @@
                         <div class="mb-3">
                             <label for="edit_blood_type" class="form-label">Tipo de Sangre</label>
                             <select class="form-select" id="edit_blood_type" name="blood_type" required>
-                                @foreach (['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'] as $bloodType)
+                                @foreach (['A✛', 'A-', 'B✛', 'B-', 'AB✛', 'AB-', 'O✛', 'O-'] as $bloodType)
                                     <option value="{{ $bloodType }}"
                                         {{ $employee->blood_type == $bloodType ? 'selected' : '' }}>
                                         {{ $bloodType }}
@@ -277,13 +277,13 @@
                             <select class="form-select" id="blood_type" name="blood_type" required>
                                 <option value="" disabled selected>Seleccione el tipo de Sangre</option>
                                 <optgroup label="Tipos de Sangre">
-                                    <option value="A+">A+</option>
+                                    <option value="A✛">A+</option>
                                     <option value="A-">A-</option>
-                                    <option value="B+">B+</option>
+                                    <option value="B✛">B+</option>
                                     <option value="B-">B-</option>
-                                    <option value="AB+">AB+</option>
+                                    <option value="AB✛">AB+</option>
                                     <option value="AB-">AB-</option>
-                                    <option value="O+">O+</option>
+                                    <option value="O✛">O+</option>
                                     <option value="O-">O-</option>
                             </select>
                         </div>

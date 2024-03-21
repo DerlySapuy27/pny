@@ -7,13 +7,13 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\SedeController;
+use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\EquipmentController;
 
 
 Auth::routes();
-Route::get('/', function(){ return view('welcome');});
+Route::get('/', function(){ return view('auth.login');});
 Route::get('/home', function() {return view('home');})->name('home')->middleware('auth');
-
 
 /* Rutas de Departamento */
 Route::get('/departamento/index', [DepartmentController::class, 'index'])->name('departamento.index')->middleware('auth');
@@ -36,8 +36,6 @@ Route::get('/cargo/index', [PositionController::class, 'index'])->name('cargo.in
 Route::get('/cargo/{id}/detalle', [PositionController::class, 'detalle'])->name('cargo.detalle')->middleware('auth');
 Route::put('/cargo/{id}/update', [PositionController::class, 'update'])->name('cargo.update')->middleware('auth');
 Route::delete('/cargo/{position}', [PositionController::class, 'delete'])->name('cargo.delete')->middleware('auth');
-
-/*rutas de sedes*/
 
 /* Rutas de sedes */
 Route::post('/sede/create', [SedeController::class, 'crearsede'])->name('sede.crearsede')->middleware('auth');
@@ -63,8 +61,6 @@ Route::match(['get', 'post'], '/carnet/empleadolist', [LicenseController::class,
 Route::post('/carnet/generate-carnet', [LicenseController::class, 'generateCarnet'])->name('carnet.generate-carnet')->middleware('auth');
 Route::get('/carnet/empleadodetails', [LicenseController::class, 'getEmployeeDetails'])->name('carnet.empleadodetails');
 Route::get('/carnet/preview', [LicenseController::class, 'preview'])->name('carnet.preview');
-
-
 
 
 /*Equipment Routes*/  

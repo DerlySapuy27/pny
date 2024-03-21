@@ -37,7 +37,7 @@ class EmployeeController extends Controller
             'document_number' => 'required|string|max:255',
             'sex_type' => 'required|in:M,F', 
             'position_id' => 'required|exists:positions,id',
-            'blood_type' => 'required|in:A+,A-,B+,B-,AB+,AB-,O+,O-',
+            'blood_type' => 'required|in:A✛,A-,B✛,B-,AB✛,AB-,O✛,O-',
             'area_id' => 'required|exists:areas,id',
             'delivered' => 'boolean',
             'observation' => 'nullable|string',

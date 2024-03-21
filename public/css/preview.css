@@ -1,107 +1,208 @@
+/* Estilos normales para la pantalla */
 .positive-rh {
-    color: #008000; /* Cambia el color según tu preferencia */
+    color: #008000;
     font-weight: bold;
+}
+
+.health-sex-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.3cm;
+    font-family: Calibri, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+}
+
+.document-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.3cm;
+    font-family: Calibri, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+}
+
+.document-label,
+.document-number {
+    display: inline-block;
+}
+
+.employee-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: -5px; /* Ajusta el margen negativo para alejar las tarjetas del sidebar */
+}
+
+.employee-card {
+    background-image: url("/images/base.jpeg");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px; /* Ajusta el margen entre las tarjetas */
+    width: 5.4cm; /* Ancho fijo de 5.4cm */
+    height: 8.5cm; /* Alto fijo de 8.5cm */
+    box-sizing: border-box;
+}
+
+.employee-image {
+    width: 2.03cm;
+    height: 2.6cm;
+    margin-bottom: 4px;
+    margin-top: 0.15cm;
+    border-radius: 5px;
+}
+
+.name-last-name,
+.position,
+.calibri-14 {
+    margin: 2px 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.name-last-name {
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+}
+
+.position {
+    font-size: 9px;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 8px;
+    display: inline-block;
+    width: 4.3cm;
+    height: 0.7cm;
+    margin: 0.5cm 0.5cm 0 0.2cm;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.calibri-14 {
+    font-family: Calibri, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+@media print {
+    /* Nueva clase para ubicar las tarjetas */
+    .print-employee-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-content: flex-start;
+        margin: -0.004in -0.004in; /* Ajustar el margen para que las tarjetas estén a menos de 1 mm de distancia en todas las direcciones */
+    }
+
+    /* Reseteo para la impresión */
+    body, html {
+        width: 8.5in;
+        height: 11in;
+        margin: 0;
+        padding: 0;
+        background: none !important;
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+        box-sizing: border-box;
+    }
+
+    /* Ocultar elementos no deseados en la impresión */
+    header, footer, button, nav, .noprint, .card-header, .content-header {
+        display: none !important;
+    }
+
+    /* Ajustar tarjeta de empleado */
+    .employee-card {
+        width: 6.9cm; /* Ancho fijo de 5.4cm */
+        height: 10.9cm; /* Alto fijo de 8.5cm */
+        box-sizing: border-box !important;
+        page-break-inside: avoid; /* Evitar que las tarjetas se corten entre páginas */
+    }
+
+    /* Ajustar el espacio entre las tarjetas */
+    .employee-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start; /* Alinear las tarjetas al inicio */
+        align-content: flex-start; /* Alinear las tarjetas al inicio */
+        margin: -0.004in -0.004in; /* Ajustar el margen para que las tarjetas estén a menos de 1 mm de distancia en todas las direcciones */
+    }
+
+    /* Estilos de contenido dentro de la tarjeta */
+    .employee-card .employee-image {
+        width: 2.7cm;
+        height: 3.6cm;
+        border-radius: 6.412px;
+    }
+
+    .employee-card .name-last-name {
+        font-size: 16.1064px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .employee-card .position {
+        font-size: 11.9px;
+        color: white;
+        font-weight: bold;
+        border-radius: 10.2592px;
+        padding: 6px;
+        display: inline-block;
+        width: 5.8cm;
+        height: 0.9cm;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .employee-card{
+        margin: 0.5512cm 0.6412cm 0 0.25648cm; /* Ajustar margen superior e inferior */
+        margin-bottom: 0.01cm; /* Reducir espacio en la parte inferior */
+        margin-top: 0.02cm; /* Ajuste para bajar un poco */
+        margin: 0.05in !important; /* Margen reducido en todas las direcciones */
+
+    }
+
+    .employee-card .calibri-14 {
+        font-family: Calibri, sans-serif;
+        font-size: 23.0007px; /* Corregir valor del tamaño de fuente */
+        font-weight: bold;
+    }
+
+    /* Ajustes adicionales */
+    body, html, .employee-container {
+        page-break-before: auto;
+        page-break-after: auto;
+        page-break-inside: avoid;
+    }
+
+    
+    .health-sex-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 0.8cm;
+        font-family: Calibri, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        color: #000;
+    }
+    .document-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 0.8cm;
+        font-family: Calibri, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        color: #000;
+    }
 }
 
 
 
 
-    .health-sex-container {
-        display: flex;
-        justify-content: space-between;
-        padding: 0 0.3cm;
-        /* Ajusta esto según sea necesario para alinear correctamente */
-        font-family: Calibri, sans-serif;
-        font-size: 14px;
-        font-weight: bold;
-        color: #000;
-        /* Ajusta el color según sea necesario */
-    }
-
-    .document-container {
-        display: flex;
-        justify-content: space-between;
-        padding: 0 0.3cm;
-        /* Reducido de 0.5cm a 0.3cm */
-        font-family: Calibri, sans-serif;
-        font-size: 14px;
-        font-weight: bold;
-        color: #000;
-        /* O el color deseado */
-    }
-
-    .document-label,
-    .document-number {
-        display: inline-block;
-    }
-
-    .employee-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-
-    .employee-card {
-        background-image: url("/images/base.jpeg");
-        background-size: 100% 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin: 10px;
-        width: 5.3cm;
-        height: 8.5cm;
-        box-sizing: border-box;
-        /* Asegura que el padding no afecte el tamaño total */
-    }
-
-    .employee-image {
-        width: 2.0cm;
-        height: 2.6cm;
-        margin-bottom: 4px;
-        /* Reducir el espaciado debajo de la imagen */
-        margin-top: 0.15cm;
-        /* Establecer la distancia desde la parte superior */
-    }
-
-    .name-last-name,
-    .position,
-    .calibri-14 {
-        margin: 2px 0;
-        /* Reducir el espaciado entre líneas */
-        text-align: center;
-        /* Centrar el texto */
-        font-family: Arial, sans-serif;
-    }
-
-    .name-last-name {
-        font-size: 11px;
-        font-weight: bold;
-        /* Texto en negrita */
-        color: white;
-        /* Cambiar el color del texto a blanco */
-    }
-
-
-    .position {
-        font-size: 9px;
-        color: white;
-        font-weight: bold;
-        /* Texto en negrita */
-        border-radius: 8px;
-        padding: 8px;
-        display: inline-block;
-        width: 4.3cm;
-        height: 0.7cm;
-        margin: 0.5cm 0.5cm 0 0.2cm;
-        text-align: center;
-        vertical-align: middle;
-    }
-
-    .calibri-14 {
-        font-family: Calibri, sans-serif;
-        font-size: 14px;
-        font-weight: bold;
-        /* Texto en negrita */
-    }
 
