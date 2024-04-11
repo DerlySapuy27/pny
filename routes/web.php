@@ -30,6 +30,7 @@ Route::get('/area/{id}/detalle', [AreaController::class, 'detalle'])->name('area
 Route::put('/area/{id}/update', [AreaController::class, 'update'])->name('area.update')->middleware('auth');
 Route::delete('/area/{area}', [AreaController::class, 'delete'])->name('area.delete')->middleware('auth');
 
+
 /* Rutas de Cargos */
 Route::post('/cargo/create', [PositionController::class, 'crearCargo'])->name('cargo.crearCargo')->middleware('auth');
 Route::get('/cargo/index', [PositionController::class, 'index'])->name('cargo.index')->middleware('auth');
@@ -44,7 +45,6 @@ Route::get('/sede/{id}/detalle', [SedeController::class, 'detalle'])->name('sede
 Route::put('/sede/{id}/update', [SedeController::class, 'update'])->name('sede.update')->middleware('auth');
 Route::delete('/sede/{sede}', [SedeController::class, 'delete'])->name('sede.delete')->middleware('auth');
 
-
 /* Rutas de Empleado */
 Route::get('/empleado/index', [EmployeeController::class, 'index'])->name('empleado.index')->middleware('auth');
 Route::get('/empleado/{id}/cargar-datos', [EmployeeController::class, 'cargarDatos'])->name('empleado.cargar-datos')->middleware('auth');
@@ -53,6 +53,9 @@ Route::delete('/empleado/{employee}', [EmployeeController::class, 'delete'])->na
 Route::get('empleado/details', [EmployeeController::class, 'getEmployeeDetails'])->name('employee.details')->middleware('auth');/* DETALLES DE EMPLEADO MODAL OJITO */
 Route::get('/employee/{id}/details', [EmployeeController::class, 'details']);
 Route::put('/employee/{id}/update', [EmployeeController::class, 'update'])->name('employee.update');
+Route::get('/empleado/consultaempleado', [EmployeeController::class, 'consultaempleado'])->name('empleado.consultaempleado');
+Route::get('/employee/empleadoarea/{areaId}', [EmployeeController::class, 'empleadoArea'])->name('employee.empleadoarea');
+Route::get('/employee/empleadosporarea/{areaId}', [EmployeeController::class, 'empleadosPorArea'])->name('employee.empleadosporarea');
 
 
 /* Rutas Gestion de Carnet */
@@ -62,8 +65,11 @@ Route::post('/carnet/generate-carnet', [LicenseController::class, 'generateCarne
 Route::get('/carnet/empleadodetails', [LicenseController::class, 'getEmployeeDetails'])->name('carnet.empleadodetails');
 Route::get('/carnet/preview', [LicenseController::class, 'preview'])->name('carnet.preview');
 
+/* Rutas Gestion de Actas de ENTREGA Carnet empresarial */
+Route::get('/carnet/acta', [LicenseController::class, 'acta'])->name('carnet.acta');
+Route::get('/carnet/generate-actas/{ids}', [LicenseController::class, 'generateActas'])->name('carnet.generateActas');
 
-/*Equipment Routes*/  
+/*Equipment Routes*/
 Route::get('/Equipment/View/PNY', [EquipmentController::class, 'EquipmentView_PNY'])->name('Equipment.View.PNY');
 Route::get('/EquipmentAssing/PNY', [EquipmentController::class, 'EquipmentAssing_PNY'])->name('Equipment.Assing.PNY');
 Route::get('/EquipmentConsulte/PNY', [EquipmentController::class, 'EquipmentConsulte_PNY'])->name('Equioment.Consulte.PNY');

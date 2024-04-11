@@ -3,7 +3,7 @@
 @section('content_header')
     @include('head')
     <center>
-        <h1 class="m-0 text-dark">Gestión de Carnets Piscicola New York-Personal sin Carnetizar</h1>
+        <h1 class="m-0 text-dark">ACTA DE ENTREGA CARNET PROFESIONAL</h1>
     </center><br>
 @stop
 
@@ -11,8 +11,8 @@
 
     <div class="card" style="width: 90%; margin-left: 40px;">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <button id="empleadocarnet" class="btn btn-success">
-                <i class="fas fa-folder-plus"></i> Adjuntar a la Plantilla
+            <button id="generateCertificates" class="btn btn-success">
+                <i class="fas fa-folder-plus"></i> GENERAR ACTAS DE ENTREGA CARNET EMPRESARIAL
             </button>
         </div>
         <!-- Lista de registros de Empleados -->
@@ -21,7 +21,7 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Nombre</th> 
+                        <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Cargo</th>
                         <th>Número de Documento</th>
@@ -69,37 +69,35 @@
             </form>
         </div>
         @include('alerts')
-        <!-- Script para manejar la generación de la plantilla y la vista previa -->
+
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                document.getElementById('empleadocarnet').addEventListener('click', function() {
-                    // Obtener la ruta de la imagen
-                    const imagePath = "{{ asset('storage') }}";  // Quité la barra al final
+                document.getElementById('generateCertificates').addEventListener('click', function() {
                     // Obtener los empleados seleccionados
                     const selectedEmployees = document.querySelectorAll('input[name="selectedEmployees[]"]:checked');
-                    // Obtener los detalles de los empleados seleccionados
-                    const selectedEmployeeDetails = [];
-                    selectedEmployees.forEach(employee => {
-                        const details = {
-                            name: employee.getAttribute('data-name'),
-                            last_name: employee.getAttribute('data-last_name'),
-                            position: employee.getAttribute('data-position'),
-                            document_number: employee.getAttribute('data-document_number'),
-                            blood_type: employee.getAttribute('data-blood_type'),
-                            sex_type: employee.getAttribute('data-sex_type'),
-                            signature: employee.getAttribute('data-signature'),
-                            // Agrega más campos según tus necesidades
-                        };
-                        selectedEmployeeDetails.push(details);
-                    });
-                    // Convertir detalles a JSON y codificarlo para enviar como parámetro
-                    const encodedDetails = encodeURIComponent(JSON.stringify(selectedEmployeeDetails));
-                    // Redirigir a la ruta para mostrar la vista previa con los detalles y la ruta de la imagen
-                    window.location.href = `/carnet/preview?details=${encodedDetails}&imagePath=${imagePath}`;
+
+                    // Verificar si se seleccionó al menos un empleado
+                    if (selectedEmployees.length > 0) {
+                        // Crear un array para almacenar los IDs de los empleados seleccionados
+                        const selectedEmployeeIds = [];
+
+                        // Recorrer los empleados seleccionados y agregar sus IDs al array
+                        selectedEmployees.forEach(function(employee) {
+                            selectedEmployeeIds.push(employee.value);
+                        });
+
+                        // Convertir el array de IDs en una cadena separada por comas
+                        const employeeIdsString = selectedEmployeeIds.join(',');
+
+                        // Redireccionar al controlador con los IDs de los empleados seleccionados
+                        window.location.href = `/carnet/generate-actas/${employeeIdsString}`;
+                    } else {
+                        // Mostrar un mensaje de error si no se seleccionó ningún empleado
+                        console.error('Error: No se ha seleccionado ningún empleado');
+                    }
                 });
             });
         </script>
 
 
-
-    @stop
+@stop

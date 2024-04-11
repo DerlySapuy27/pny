@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Area; 
-use App\Models\Department; 
+use App\Models\Area;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class AreaController extends Controller
@@ -13,7 +13,7 @@ class AreaController extends Controller
         $departments = Department::all();
         return view('area.index', compact('areas', 'departments'));}
 
-        
+
     public function creararea(Request $request) {
     $request->validate([
         'name' => 'required|string|max:255',
@@ -78,6 +78,9 @@ public function detalle($id)
         return redirect()->route('area.index')->with('success', 'Área eliminada exitosamente.');
     }
 
+
+
+    
 
 
 

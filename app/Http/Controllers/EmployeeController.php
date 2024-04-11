@@ -35,7 +35,7 @@ class EmployeeController extends Controller
             'name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'document_number' => 'required|string|max:255',
-            'sex_type' => 'required|in:M,F', 
+            'sex_type' => 'required|in:M,F',
             'position_id' => 'required|exists:positions,id',
             'blood_type' => 'required|in:A✛,A-,B✛,B-,AB✛,AB-,O✛,O-',
             'area_id' => 'required|exists:areas,id',
@@ -45,9 +45,9 @@ class EmployeeController extends Controller
             'sede_id' => 'required|exists:sedes,id',
             'signature' => 'file|nullable|image|mimes:jpeg,png,jpg,gif']);
 
-            $delivered = $request->input('delivered', 0); 
-            
-            
+            $delivered = $request->input('delivered', 0);
+
+
         $employee = new Employee([
             'name' => $request->name ? strtoupper($request->name) : null,
             'last_name' => $request->last_name ? strtoupper($request->last_name) : null,
@@ -66,7 +66,6 @@ class EmployeeController extends Controller
         $employee->save();
         return redirect()->route('empleado.index')->with('success', 'Empleado creado exitosamente.');}
 
-
     public function delete(Employee $employee){
         $employee->delete();
         return redirect()->route('empleado.index')->with('success', 'Empleado eliminado exitosamente.');}
@@ -74,7 +73,7 @@ class EmployeeController extends Controller
     public function getEmployeeDetails(Request $request){
         $employeeId = $request->input('employee_id');
         $employee = Employee::with(['position', 'area', 'sede'])->findOrFail($employeeId);
-        return response()->json(['employee' => $employee]);}    
+        return response()->json(['employee' => $employee]);}
 
     public function update(Request $request, $id) {
         $request->validate([
@@ -108,11 +107,27 @@ class EmployeeController extends Controller
         $employee->save();
         return redirect()->route('empleado.index')->with('success', 'Empleado actualizado exitosamente.');}
 
-
     public function details($id){
         $employee = Employee::findOrFail($id);
         return response()->json($employee);}
 
+    public function consultaempleado(){
+        $areas = Area::all();
+        return view('empleado.consultaempleado', compact('areas'));}
+
+
+    public function empleadosPorArea($areaId){
+        // Obtener la lista de empleados asociados a un área específica
+        $empleados = Employee::where('area_id', $areaId)->get();
+        // Devolver la lista de empleados en formato JSON
+        return response()->json($empleados);}
+
+    public function empleadoArea($areaId){
+        // Obtener el área específica
+        $area = Area::findOrFail($areaId);
+        // Obtener los empleados asociados a esa área
+        $empleados = Employee::where('area_id', $areaId)->get();
+        return view('empleado.empleadoarea', compact('area', 'empleados'));}
 
 
 

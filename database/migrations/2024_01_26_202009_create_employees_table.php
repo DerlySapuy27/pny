@@ -25,10 +25,11 @@ return new class extends Migration
             $table->string('license_number')->nullable(); // Permite valores nulos
             $table->foreignId('sede_id')->constrained()->onDelete('cascade');
             $table->binary('signature')->nullable();
+            $table->string('id_ZKT')->nullable();
             $table->timestamps();
         });
     }
-    
+
     /**
      * Reverse the migrations.
      */

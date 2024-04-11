@@ -26,6 +26,7 @@
                     <th># Documento</th>
                     <th>Área</th>
                     <th>Entrega Carnet</th>
+                    <th>Observacion</th>
                     <th>Detalles</th>
                     <th>Acciones</th>
                 </tr>
@@ -38,6 +39,7 @@
                         <td>{{ $employee->document_number }}</td>
                         <td>{{ $employee->area->name }}</td>
                         <td>{{ $employee->delivered ? 'SI' : 'NO' }}</td>
+                        <td>{{ $employee->observation }}</td>
                         <td>
                             <button type="button" class="btn btn-info" style="width: 70px;" data-bs-toggle="modal"
                                 data-bs-target="#visualizarEmpleadoModal"
@@ -210,7 +212,7 @@
                                 @else
                                     Sin firma
                                 @endif
-                            </div>  
+                            </div>
                         </div>
                         <hr>
                         <center><button type="submit" class="btn btn-primary">Guardar</button></center>
@@ -304,7 +306,7 @@
                                 <option value="0" selected>No</option>
                                 <option value="1">Sí</option>
                             </select>
-                        </div>                        
+                        </div>
                         <div class="mb-3">
                             <label for="observation" class="form-label">Observación</label>
                             <textarea class="form-control" id="observation" name="observation" oninput="formatToUpper(this)"
@@ -461,7 +463,7 @@
             `<img src="{{ asset('storage/') }}/${employee.signature}" alt="Firma" style="max-width: 100px; max-height: 100px;">` :
             'Sin foto';
         // Actualizar el contenido del modal con los detalles del empleado
-        $('#visualizarEmpleadoModal').find('.modal-body').html(`    
+        $('#visualizarEmpleadoModal').find('.modal-body').html(`
             <p class="font-weight-bold">${employee.name} ${employee.last_name}</p>
             <p><strong></strong> ${employee.position ? employee.position.name : 'N/A'}</p>
             <p><strong></strong> </p>
@@ -474,8 +476,8 @@
             <p><strong>#Carnet:</strong> ${employee.license_number ? employee.license_number : 'SIN ASIGNAR'}</p>
             <p><strong>Sede:</strong> ${employee.sede ? employee.sede.name : 'N/A'}</p>
             <center><p><strong></strong> ${firmaHTML}</p></center>
-            
-            
+
+
         `);
         // Mostrar el modal
         $('#visualizarEmpleadoModal').modal('show');}

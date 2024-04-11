@@ -292,33 +292,74 @@ return [
     'menu' => [
         [
             'text' => 'Empleados',
-            'url'  => '/empleado/index',  
+
             'icon' => 'fas fa-fw fa-user',
+
+
+            'submenu' => [
+                [
+                    'text' => 'Agregar Empleado',
+                    'url'  => '/empleado/index',
+                    'icon' => 'fas fa-user-plus',
+                ],
+                [
+                    'text' => 'Consultar Empleados',
+                    'url' => '/empleado/consultaempleado',
+                    'icon' => 'fas fa-search',
+                ],
+
+            ],
+
         ],
+
         [
-            'text' => 'Carnet',
-            'url'  => '/carnet/index',  
+            'text' => 'Carnets',
             'icon' => 'fas fa-id-card',
+
+            'submenu' => [
+                [
+                    'text' => 'Generar Carnet',
+                    'url' => '/carnet/index',
+                    'icon' => 'fas fa-id-badge',
+                ],
+                [
+                    'text' => 'Actas de entrega',
+                    'url' => '/carnet/acta',
+                    'icon' => 'fas fa-file-pdf',
+                ],
+
+            ],
+
         ],
+
         [
-            'text' => 'Departamento',
-            'url'  => '/departamento/index',
-            'icon' => 'fas fa-house-user',
-        ],
-        [
-            'text' => 'Área',
-            'url'  => '/area/index', 
-            'icon' => 'fas fa-fw fa-leaf',
-        ],
-        [
-            'text' => 'Cargos',
-            'url'  => '/cargo/index',
-            'icon' => 'fas fa-fw fa-address-book',
-        ],
-        [
-            'text' => 'Sedes',
-            'url'  => '/sede/index',
-            'icon' => 'fas fa-map-marker-alt',
+            'text' => 'Gestión',
+            'icon' => 'fas fa-tasks',
+
+            'submenu' => [
+                [
+                    'text' => 'Departamento',
+                    'url'  => '/departamento/index',
+                    'icon' => 'fas fa-house-user',
+                ],
+                [
+                    'text' => 'Área',
+                    'url'  => '/area/index',
+                    'icon' => 'fas fa-fw fa-leaf',
+                ],
+                [
+                    'text' => 'Cargos',
+                    'url'  => '/cargo/index',
+                    'icon' => 'fas fa-fw fa-address-book',
+                ],
+                [
+                    'text' => 'Sedes',
+                    'url'  => '/sede/index',
+                    'icon' => 'fas fa-map-marker-alt',
+                ],
+
+            ],
+
         ],
         [
             'text' => 'Equipos',
@@ -333,24 +374,24 @@ return [
                     'text' => 'Asignar  Equipos',
                     'url' => '/AsignacionEquiposPNY',
                     'icon' => 'fas fa-chalkboard-teacher'
-               
+
                 ],
                 [
                     'text' => 'Consultar  Equipos',
                     'url' => '/ConsultaEquiposPNY',
                     'icon' => 'far fa-file'
-               
+
                 ],
                 [
                     'text' => 'Prestamo Impresora',
                     'url' => '/Equipment/PrinterLoan/PNY',
                     'icon' => 'fas fa-print'
-               
+
                 ],
-                
+
             ],
         ],
-    ],   
+    ],
 
     /*
     |--------------------------------------------------------------------------
