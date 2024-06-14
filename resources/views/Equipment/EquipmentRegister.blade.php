@@ -21,7 +21,7 @@
         <table id="datatable" class="table table-striped shadow-lg mt-4" style="width:100%">
             <thead>
                 <tr>
-                    <th>Series</th>
+                    <th>Serial</th>
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Tipo</th>
@@ -37,8 +37,9 @@
                         <td>{{ $Equipment->type}}</td>                        
                         <td>
                             <!-- Edit, Delete, and View buttons -->
-                            <div class="container text-center">
+                          
                                 <div class="row">
+                            
                                     <!-- Update Button -->
                                     <div class="col">
                                         <form method="POST" action="{{ route('View.inf.Equipment.PNY', ['id' => $Equipment->id]) }}">
@@ -47,7 +48,8 @@
                                             <button type="button" class="btn btn-primary" style="width: 70px;" data-bs-toggle="modal" data-bs-target="#EditEquipmentModal" onclick="EquipmentEdit({{ $Equipment->id }})">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                        </form>             </div>
+                                        </form>       
+                                  </div>
                                     <!-- End Update Button -->
                         
                                     <!-- View Button -->

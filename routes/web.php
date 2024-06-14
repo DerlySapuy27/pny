@@ -69,6 +69,10 @@ Route::get('/carnet/preview', [LicenseController::class, 'preview'])->name('carn
 Route::get('/carnet/acta', [LicenseController::class, 'acta'])->name('carnet.acta');
 Route::get('/carnet/generate-actas/{ids}', [LicenseController::class, 'generateActas'])->name('carnet.generateActas');
 
+
+
+
+
 /*Equipment Routes*/
 Route::get('/Equipment/View/PNY', [EquipmentController::class, 'EquipmentView_PNY'])->name('Equipment.View.PNY');
 Route::get('/EquipmentAssing/PNY', [EquipmentController::class, 'EquipmentAssing_PNY'])->name('Equipment.Assing.PNY');

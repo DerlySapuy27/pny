@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class EquipmentController extends Controller
 {
+
+
+
     /* CRUD Functions */
     public function EquipmentCreate_PNY(Request $request)
     {
@@ -29,6 +32,8 @@ class EquipmentController extends Controller
         return redirect()->route('Equipment.View.PNY')->with('success', 'Equipo creado exitosamente.');
     }
 
+
+
     public function EquipmentView_PNY()
     {
         $equipment = new Equipment; // Crear una nueva instancia de Equipment
@@ -37,6 +42,8 @@ class EquipmentController extends Controller
         return view('Equipment.EquipmentRegister', compact('equipment', 'equipmentTypes', 'Equipments'));
     }
    
+
+
     public function EquipmentUpdate_PNY(Request $request, $id)
     {
         $request->validate([
