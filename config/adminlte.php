@@ -376,16 +376,17 @@ return [
                     'icon' => 'fas fa-chalkboard-teacher'
 
                 ],
+               
                 [
-                    'text' => 'Consultar  Equipos',
-                    'url' => '/ConsultaEquiposPNY',
-                    'icon' => 'far fa-file'
+                    'text' => 'Prestamo Proyector',
+                    'url' => '/Equipment/PrinterLoan/PNY',
+                    'icon' => 'fas fa-print'
 
                 ],
                 [
-                    'text' => 'Prestamo Impresora',
-                    'url' => '/Equipment/PrinterLoan/PNY',
-                    'icon' => 'fas fa-print'
+                    'text' => 'Devolucioin de equipo',
+                    'url' => '/DevolutionEquipment/PNY',
+                    'icon' => 'fas fa-undo'
 
                 ],
 

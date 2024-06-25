@@ -35,7 +35,7 @@ class DepartmentController extends Controller
     $department = Department::findOrFail($id);
     return response()->json($department);}
 
-        public function delete(Department $departamento) {
+    public function delete(Department $departamento) {
             $departamento->delete();
             return redirect()->route('departamento.index')->with('success', 'Departamento eliminado exitosamente.');}
     

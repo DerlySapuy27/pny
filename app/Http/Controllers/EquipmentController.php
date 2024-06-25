@@ -41,6 +41,12 @@ class EquipmentController extends Controller
         $Equipments = Equipment::all(); // Obtener todos los registros de Equipment
         return view('Equipment.EquipmentRegister', compact('equipment', 'equipmentTypes', 'Equipments'));
     }
+
+    public function EquipmentDevolution_PNY(){
+
+        return view('Equipment.Devolution');
+
+    }
    
 
 

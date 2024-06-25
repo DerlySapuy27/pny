@@ -4,7 +4,7 @@
     @include('head')
     <link rel="icon" type="image/png" href="{{ asset('../images/LOGOPNY.png') }}">
 
-    <h1 class="m-0 text-dark"> Prestamo Impresora PNY</h1>
+    <h1 class="m-0 text-dark"> Prestamo de Proyector PNY</h1>
 @stop
 
 
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{route('')}}">
+                    <form action="">
                         <div class="mb-3">
                             <label for="Cc" class="form-label">Ingrese numero de cedula</label>
                             <input id="Cc" class="form-control" type="number">

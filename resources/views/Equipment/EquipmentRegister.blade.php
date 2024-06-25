@@ -2,7 +2,7 @@
 
 @section('content_header')
     @include('head')
-<center>  <br>  <h1 class="m-0 text-dark">Equipos Piscícola New York</h1>
+<center>  <br>  <h1 class="m-0 text-dark">Registro de equipos Piscícola New York</h1>
 </center>
 @stop
 @section('content')
@@ -53,11 +53,11 @@
                                     <!-- End Update Button -->
                         
                                     <!-- View Button -->
-                                    <div class="col">
+                                {{--  <div class="col">
                                         <button type="button" class="btn btn-warning view-modal-button" style="width: 70px;" data-bs-toggle="modal" data-bs-target="#ViewModal" data-equipment="{{ json_encode($Equipment) }}">
                                             <i class="fas fa-eye"></i>
                                         </button>
-                                    </div>
+                                    </div>  --}}
                                     <!-- End View Button -->
                         
                                     <!-- Delete Button -->
