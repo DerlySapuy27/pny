@@ -21,22 +21,28 @@
 
     <div class="card-body">
         <table id="datatable" class="table table-striped shadow-lg mt-4"  style="width: 100%;">
-             <thead>
+            <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Documento</th>
-                    <th>Fecha</th>
-                    <th>Acciones</th>
-
+                  <th>Identificacion</th>
+                  <th>Nombre</th>
+                  <th>Hora</th>
+                  <th>Fecha</th>
+                  <th>Motivo de solicitud</th>
+                  <th>Estado de solicitud</th>
+                <th>Acciones</th>
                 </tr>                
              </thead>
              <tbody>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                  <td>1079508239</td>
+                  <td>David Cadena</td>
+                  <td>4:29 am</td>
+                  <td>27/05/2024</td>
+                  <td>capacitacion 3er piso</td>
+                  <td>pendiente</td>
+                  <td>
+                        <button class="btn btn-success"> <i class="fas fa-eye">ㅤVer</i></button></td>      
+                  </tr>
              </tbody>
         </table>
     </div>
@@ -60,7 +66,8 @@
                             <label for="Cc" class="form-label">Ingrese numero de cedula</label>
                             <input id="Cc" class="form-control" type="number">
                         </div>      
-                        <button type="submit" class="btn btn-primary">Agendar </button>               
+                        <a href="" class="btn btn-primary">Agendar</a>
+    
                     </form>
                 </div>
 

@@ -371,8 +371,8 @@ return [
                     'icon' => 'fas fa-plus'
                 ],
                 [
-                    'text' => 'Asignar  Equipos',
-                    'url' => '/AsignacionEquiposPNY',
+                    'text' => 'Asignar Equipos',
+                    'url' => '/EquipmentAssing/PNY',
                     'icon' => 'fas fa-chalkboard-teacher'
 
                 ],

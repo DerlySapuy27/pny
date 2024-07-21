@@ -18,7 +18,7 @@
 
     <!-- Equipment List -->
     <div class="card-body">
-        <table id="datatable" class="table table-striped shadow-lg mt-4" style="width:100%">
+        <table id="datatable" class="table table-striped shadow-lg mt-4" style="width:100%;">
             <thead>
                 <tr>
                     <th>Serial</th>
@@ -53,11 +53,11 @@
                                     <!-- End Update Button -->
                         
                                     <!-- View Button -->
-                                {{--  <div class="col">
+                                <div class="col">
                                         <button type="button" class="btn btn-warning view-modal-button" style="width: 70px;" data-bs-toggle="modal" data-bs-target="#ViewModal" data-equipment="{{ json_encode($Equipment) }}">
                                             <i class="fas fa-eye"></i>
                                         </button>
-                                    </div>  --}}
+                                    </div> 
                                     <!-- End View Button -->
                         
                                     <!-- Delete Button -->

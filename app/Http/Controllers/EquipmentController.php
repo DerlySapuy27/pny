@@ -47,8 +47,13 @@ class EquipmentController extends Controller
         return view('Equipment.Devolution');
 
     }
-   
+    
+     public function EquipmentAssing_PNY(){
 
+      return view('Equipment.EquipmentAssing');
+
+
+    }
 
     public function EquipmentUpdate_PNY(Request $request, $id)
     {

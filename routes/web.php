@@ -74,7 +74,7 @@ Route::get('/carnet/generate-actas/{ids}', [LicenseController::class, 'generateA
 
 
 /*Equipment Routes*/
-Route::get('/Equipment/View/PNY', [EquipmentController::class, 'EquipmentView_PNY'])->name('Equipment.View.PNY');
+Route::get('/Equipment/View/PNY', [EquipmentController::class, 'EquipmentView_PNY'])->name('Equipment.View.PNY')->middleware('auth');
 Route::get('/EquipmentAssing/PNY', [EquipmentController::class, 'EquipmentAssing_PNY'])->name('Equipment.Assing.PNY');
 Route::get('/EquipmentConsulte/PNY', [EquipmentController::class, 'EquipmentConsulte_PNY'])->name('Equipment.Consulte.PNY');
 Route::get('/DevolutionEquipment/PNY', [EquipmentController::class, 'EquipmentDevolution_PNY'])->name('Equipment.Devolution.PNY');
